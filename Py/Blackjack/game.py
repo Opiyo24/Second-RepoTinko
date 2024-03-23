@@ -12,7 +12,7 @@ class Player:
         self.count = count
 
     def __str__(self):
-        return f"PLAYER DETAILS:\nName:\t\t{self.name}\nCapitat:\t\t{self.capital}\nStake:\t\t{self.stake}\nCard Count:\t{self.count}\n"
+        return f"\n\nPLAYER DETAILS:\n\nName:\t\t{self.name}\nCapital:\t{self.capital}\nStake:\t\t{self.stake}\nCard Count:\t{self.count}\n"
     
     def __repr__(self):
         return f"Player({self.name}, {self.capital}, {self.stake}, {self.count})"
@@ -39,14 +39,26 @@ class Player:
         if (self.name == "Computer"):
             seed = random.randint(1, 10)
             self.stake = seed * 100
+            self.capital -= self.stake
+            print(f"Computer stake:\t\t{self.stake}")
         else:
             while True:
                 try:
-                    stake_amount = int(input(f"How much woukd you like to stake?"))
+                    stake_amount = int(input(f"How much woukd you like to stake?  "))
                     if stake_amount > 0 and stake_amount <= self.capital:
                         self.stake = stake_amount
+                        self.capital -= self.stake
+                        print(f"Player stake:\t\t{self.stake}")
                         break
                     else:
                         print('SORRY, You ran out of MUD!!!')
                 except ValueError:
                     print('Stake amount must eb a number!!')
+
+    
+    def deal(self):
+        cards = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13}
+        selection = random.randint(1, 13)
+        self.count += cards[selection]
+        return self.count
+
