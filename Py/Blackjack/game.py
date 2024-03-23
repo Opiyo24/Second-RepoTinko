@@ -16,28 +16,11 @@ class Player:
     
     def __repr__(self):
         return f"Player({self.name}, {self.capital}, {self.stake}, {self.count})"
-    
-    # @property
-    # def name(self):
-    #     return self.name
-    
-    # @name.setter
-    # def name(self, new_name):
-    #     self.name = new_name
-    #     return
-
-    # @property
-    # def capital(self):
-    #     return self.capital
-    
-    # @capital.setter
-    # def capital(self, new_capital=1000):
-    #     self.capital = new_capital
-    #     return
 
     def play_stake(self):
-        if (self.name == "Computer"):
-            seed = random.randint(1, 10)
+        if (self.name == "COMPUTER"):
+            limit = self.capital / 100
+            seed = random.randint(0, limit)
             self.stake = seed * 100
             self.capital -= self.stake
             print(f"Computer stake:\t\t{self.stake}")
@@ -61,4 +44,43 @@ class Player:
         selection = random.randint(1, 13)
         self.count += cards[selection]
         return self.count
+    
+
+    def question(self):
+        choices = {1: "Hit", 2: "Stand"}
+        if self.name == "COMPUTER":
+            choice = random.randint(1, 2)
+            if choice == 1:
+                print(f"{self.name} chose to Hit")
+            else:
+                print(f"{self.name} chose to Stand")
+            return choices[choice]
+        else:
+            while True:
+                try:
+                    choice = int(input(f"Would you like to Hit or Stand? 1.Hit   2.Stand  "))
+                    if choice == 1:
+                        print(f"{self.name} chose to {choices[choice]}")
+                    else:
+                        print(f"{self.name} chose to {choices[choice]}")
+
+                    if choice in choices.keys():
+                        return choices[choice]
+                    else:
+                        print('Invalid choice!!')
+                except ValueError:
+                    print('Invalid choice!!')
+
+    def hit(self):
+        self.play_stake()
+        self.deal()
+
+    def current_result(self):
+        if self.count > 21:
+            return "BUSTED!!"
+        elif self.count == 21:
+            return "BLACKJACK!!"
+        else:
+            return 21 - self.count
+            
 
