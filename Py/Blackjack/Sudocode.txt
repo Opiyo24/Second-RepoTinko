@@ -1,0 +1,153 @@
+Initial stage
+    Initialize two player characters
+        computer
+        player
+    - Initialize player capital
+    - Initialize player stake variables to 0 (both players)
+    - Initialize player card count to zero
+    - Player choice (local variable)
+    - Initialize win value (total stake values) to 0
+    - Initialize cards variable (list or dictionary) ints.
+    - Initialize choice dictionary {0: No, 1: Yes}
+
+
+
+stage 1:
+    Register player: single player.
+    - Take name input (One name)
+    - Take gender input
+    - Assign money value
+
+Stage 2: stake
+    Player stake
+        Input value - player stake
+        - Adjust player capital value
+
+    Computer stake
+        - randomized value
+        - Adjust computer capital value
+
+Stage 3: Play cards
+    - Randomize cards for computer
+    - Store value in {{ c_round1 }} variable
+    - Randomize cards for player
+    - Store value in {{ p_round1 }} variable
+    - Adjust card count for both player and computer
+    - Display round 1 results for both computer and player
+    - Ask whether to stop or play round 2
+    Function(computer_decision)
+    - Input value player choice
+        Function player choice
+    else
+        function announce winner
+
+Stage 4: Player decision
+    Player_decision
+        Ask whether to play again or hold
+        Return results
+
+
+    Computer decision
+        choice 1 = Function
+            Randomize between 2 numbers
+
+            Display thinking . . .
+        choice 2 = Function
+            Randomize between 2 numbers
+
+    Aveerage choice 1 and 2
+    - Find modular value %2
+    - Use value to read choice dicionary
+
+
+
+Stage 5: Determine winner
+    Function winner(player score, computer score)
+        compare scores
+        return winner
+    
+    - if player balance is not 0
+        Ask to play another round
+            Player decision()
+                If true:
+                    Computer decision
+
+Stage 6: Announce winner
+    Function winner(Winner)
+        String to announce winner
+
+
+
+from test import status
+
+#Global variables
+cards = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13}
+p_capital = 1000
+c_capital = 1000
+p_stake = 0
+c_stake = 0
+stage = 0
+player = input("What is your name? ")
+computer = "Computer"
+win_value = 0
+p_count = 0
+c_count = 0
+choice = {0: "No", 1: "Yes"}
+p_choice = ""
+c_choice = ""
+
+
+def status():
+    print(f"\nCurrent Status:\n{computer} :\t\t{c_capital}\n{player} :\t\t\t{p_capital}\n\n     Card Count: \n{computer}\t\t{c_count}\n{player} :\t\t\t{p_count}\n\n     Current Stake: \n{computer} :\t\t{c_stake}\n{player} :\t\t\t{p_stake}\n\nPossible win :\t\t{win_value}\n\n")
+    print("=========================================\n")
+
+#STAGE 1
+def register():
+    
+    print(f"\n\t\tHELLO\n=========================================\n   WELCOME TO THE GAME OF BLACKJACK!.")
+    print("=========================================")
+    # player = input("\t What is your name? ")
+    print(f"\n\n\t       Welcome\n\nYou will  be playing against our AI.\n\n     Each player will be granted a \n  starting capital of {p_capital} currencies.\n\n\n\t     GOOD LUCK!\n")
+    print("=========================================")
+
+
+
+def stake():
+    p_stake = int(input("How much would you like to stake? "))
+    seed = random.randint(0, 1)
+    c_stake = seed * 10000
+    win_value = p_stake + c_stake
+    c_capital - c_stake
+    p_capital - p_stake
+    return p_stake, c_stake, win_value, c_capital, p_capital
+
+
+
+
+def winner_announcement(player):
+    print()
+    print("=========================================")
+    print("\t", end="")
+    print("WE HAVE A WINNER!!!")
+    print("=========================================")
+    # print()
+    # print("\tThe winner is:", end="")
+    # # time.sleep(3)
+    # # print(".", end="")
+    # # time.sleep(3)
+    # # print(".", end="")
+    # time.sleep(3)
+    # print(".", end="")
+    print()
+    print()
+    print(f"\n    CONGRATULATIONS {player} !!!\n\n")
+    print()
+    print("=========================================")
+    print()
+
+# winner_announcement(player)
+
+
+GAME START 
+register - Create a playuer object by asking for the name.
+        - Initialize computer player object.
