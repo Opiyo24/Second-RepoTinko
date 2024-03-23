@@ -9,6 +9,9 @@ player_name = str.upper(input("Enter your name: "))
 Human = Player(player_name, 1000, 0, 0)
 
 def winner():
+    """
+    Announces a winner
+    """
     comp_result = Computer.current_result()
     human_result = Human.current_result()
 
@@ -31,6 +34,9 @@ def winner():
 
 
 def main():
+    """
+        Entry point
+    """
     print(Human)
     print(Computer)
 

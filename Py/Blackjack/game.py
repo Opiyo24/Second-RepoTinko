@@ -5,6 +5,9 @@ import random
 
 
 class Player:
+    """
+        Initializes a player object
+    """
     def __init__(self, name, capital=1000, stake=0, count=0):
         self.name = name
         self.capital = capital
@@ -12,12 +15,20 @@ class Player:
         self.count = count
 
     def __str__(self):
+        """
+            String representation
+        """
         return f"\n\nPLAYER DETAILS:\n\nName:\t\t{self.name}\nCapital:\t{self.capital}\nStake:\t\t{self.stake}\nCard Count:\t{self.count}\n"
     
     def __repr__(self):
         return f"Player({self.name}, {self.capital}, {self.stake}, {self.count})"
 
     def play_stake(self):
+        """
+        Stake for both human and computer, computer stakes randomly
+        human stakes by choice
+        checks if stake  value is legit
+        """
         if (self.name == "COMPUTER"):
             limit = self.capital / 100
             seed = random.randint(0, limit)
@@ -40,6 +51,9 @@ class Player:
 
     
     def deal(self):
+        """
+        Deal - randomizes a card value
+        """
         cards = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13}
         selection = random.randint(1, 13)
         self.count += cards[selection]
@@ -47,6 +61,9 @@ class Player:
     
 
     def question(self):
+        """
+        Asks player if they want to hit or stand
+        """
         choices = {1: "Hit", 2: "Stand"}
         if self.name == "COMPUTER":
             choice = random.randint(1, 2)
@@ -72,10 +89,16 @@ class Player:
                     print('Invalid choice!!')
 
     def hit(self):
+        """
+        When the player decides to hit
+        """
         self.play_stake()
         self.deal()
 
     def current_result(self):
+        """
+        Evaluates the current points and winner
+        """
         if self.count > 21:
             return "BUSTED!!"
         elif self.count == 21:
