@@ -88,12 +88,6 @@ class Player:
                 except ValueError:
                     print('Invalid choice!!')
 
-    def hit(self):
-        """
-        When the player decides to hit
-        """
-        self.play_stake()
-        self.deal()
 
     def current_result(self):
         """

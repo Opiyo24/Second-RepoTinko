@@ -151,3 +151,17 @@ def winner_announcement(player):
 GAME START 
 register - Create a playuer object by asking for the name.
         - Initialize computer player object.
+        
+        
+Implement Deal
+
+
+    def current_result(self):
+        if self.count > 21:
+            print(f"{self.name} BUSTED!!")
+        elif self.count == 21:
+            print(f"{self.name} BLACKJACK!!")
+        else:
+            return 21 - self.count
+            
+            

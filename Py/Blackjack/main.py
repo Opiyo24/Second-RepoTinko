@@ -24,14 +24,100 @@ def winner():
         return
 
     # Both players are not busted, compare scores
-    winner = "Draw"  # Default winner (in case scores are equal)
+    jaloch = "Draw"  # Default winner (in case scores are equal)
     if human_result > comp_result:
-        winner = Human.name
+        jaloch = Human.name
     elif human_result < comp_result:
-        winner = Computer.name
+        jaloch = Computer.name
 
-    print(f"{winner} WINS!!!")
+    return jaloch
 
+def cards():
+    print(f"\n\n{Human.name} card count: \t{Human.count}\n")
+    print(f"{Computer.name} card count: \t{Computer.count}\n")
+
+    if Human.count == 21:
+        print(f"BLACLJACK!!! {Human.name} WINS!!!")
+        return
+    elif Computer.count == 21:
+        print(f"BLACKJACK!!! {Computer.name} WINS!!!")
+        return
+    elif Human.count > 21 and Computer.count < 21:
+        print(f"{Human.name} BUSTED!!! {Computer.name} WINS!!!")
+        return
+
+
+def hs(player="Both Players"):
+    print(f"\n\n\t{player}, HIT or STAND\n")
+
+def h_decision():
+    hs(Human.name)
+    decision = Human.question()
+    if decision == "Hit":
+        Human.deal()
+        cards()
+        hs(Human.name)
+    else:
+        return
+    
+def c_decision():
+    hs(Computer.name)
+    print(f"Computer is thinking...")
+    time.sleep(3)
+    decision = Computer.question()
+    if decision == "Hit":
+        Computer.deal()
+        cards()
+        hs(Computer.name)
+    else:
+        return
+
+
+def decision():
+    hs()
+    human_decision = Human.question()
+
+    print(f"Computer is thinking...")
+    time.sleep(3)
+    computer_decision = Computer.question()
+
+    if human_decision == "Hit" and computer_decision == "Hit":
+        Human.deal()
+        Computer.deal()
+        cards()
+        decision()
+    elif human_decision == "Hit" and computer_decision == "Stand":
+        Human.deal()
+        cards()
+        h_decision()
+    elif human_decision == "Stand" and computer_decision == "Hit":
+        Computer.deal()
+        cards()
+        c_decision()
+    else:
+        return
+
+
+def winner_announcement(jaloch):
+    print()
+    print("=========================================")
+    print("\t", end="")
+    print("WE HAVE A WINNER!!!")
+    print("=========================================")
+    # print()
+    # print("\tThe winner is:", end="")
+    # # time.sleep(3)
+    # # print(".", end="")
+    # # time.sleep(3)
+    # # print(".", end="")
+    # time.sleep(3)
+    # print(".", end="")
+    print()
+    print()
+    print(f"\n    CONGRATULATIONS {jaloch} !!!\n\n")
+    print()
+    print("=========================================")
+    print()
 
 def main():
     """
@@ -50,21 +136,8 @@ def main():
     Computer.deal()
     print(f"\nComputer card count: {Computer.count}")
 
-    print("\n\n\tHIT or STAND\n")
-    Human.question()
-
-    print(f"Computer is thinking...")
-    time.sleep(3)
-    Computer.question()
-
-    #Assuming everyone hits
-    Computer.hit()
-    Human.hit()
-
+    decision()
     print(Human)
     print(Computer)
-
-    
-
 
 main()
