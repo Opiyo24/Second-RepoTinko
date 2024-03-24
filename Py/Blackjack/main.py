@@ -17,18 +17,22 @@ def winner():
 
     if comp_result == "BUSTED!!":
         print(f"{Human.name} WINS!!!")  # Player wins if computer busts
+        Human.capital = Human.capital + Human.stake + Computer.stake
         return
 
     if human_result == "BUSTED!!":
         print(f"{Computer.name} WINS!!!")  # Computer wins if player busts
+        Computer.capital = Computer.capital + Human.stake + Computer.stake
         return
 
     # Both players are not busted, compare scores
     jaloch = "Draw"  # Default winner (in case scores are equal)
-    if human_result > comp_result:
+    if human_result < comp_result:
         jaloch = Human.name
-    elif human_result < comp_result:
+        Human.capital = Human.capital + Human.stake + Computer.stake
+    elif human_result > comp_result:
         jaloch = Computer.name
+        Computer.capital = Computer.capital + Human.stake + Computer.stake
 
     return jaloch
 
@@ -44,6 +48,9 @@ def cards():
         return
     elif Human.count > 21 and Computer.count < 21:
         print(f"{Human.name} BUSTED!!! {Computer.name} WINS!!!")
+        return
+    elif Computer.count > 21 and Human.count < 21:
+        print(f"{Computer.name} BUSTED!!! {Human.name} WINS!!!")
         return
 
 
@@ -137,7 +144,11 @@ def main():
     print(f"\nComputer card count: {Computer.count}")
 
     decision()
+
+    jaloch = winner()
     print(Human)
     print(Computer)
+    winner_announcement(jaloch)
+
 
 main()
