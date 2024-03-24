@@ -3,6 +3,11 @@
 import time
 from game import Player
 
+print(f"\n\t\tHELLO\n=========================================\n   WELCOME TO THE GAME OF BLACKJACK!.")
+print("=========================================")
+# player = input("\t What is your name? ")
+print(f"\n\nYou will  be playing against our AI.\n\n     Each player will be granted a \n  starting capital of 1,000 currencies.\n\n\n\t     GOOD LUCK!\n")
+print("=========================================")
 
 Computer = Player("COMPUTER", 1000, 0, 0)
 player_name = str.upper(input("Enter your name: "))
