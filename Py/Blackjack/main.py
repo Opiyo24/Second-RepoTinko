@@ -111,25 +111,11 @@ def decision():
 
 
 def winner_announcement(jaloch):
-    print()
-    print("=========================================")
-    print("\t", end="")
+    print("\n=========================================\t", end="")
     print("WE HAVE A WINNER!!!")
-    print("=========================================")
-    # print()
-    # print("\tThe winner is:", end="")
-    # # time.sleep(3)
-    # # print(".", end="")
-    # # time.sleep(3)
-    # # print(".", end="")
-    # time.sleep(3)
-    # print(".", end="")
-    print()
-    print()
+    print("=========================================\n\n")
     print(f"\n    CONGRATULATIONS {jaloch} !!!\n\n")
-    print()
-    print("=========================================")
-    print()
+    print("\n=========================================\n")
 
 def main():
     """
