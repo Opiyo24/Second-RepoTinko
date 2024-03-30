@@ -1,0 +1,30 @@
+SCREEN 1
+    Introduction
+    - Take name
+
+    screen 2 - Hidden
+    screen 3 - Hidden
+
+    PLAY -> Screen 2
+    screen 2 - Not Hidden
+    screen 1 - Hidden
+    screen 3 - Hidden
+
+SCREEN 2
+    - Stake
+    screen1 - Hidden
+    screen3 - Hidden
+
+    - DEAL -> Screen 3
+    screen 3 -Not Hidden
+    screen 1 - Hidden
+    sreen 2 - Hidden
+
+SCREEN 3
+    - HIT or STAND
+    HIT
+        back to screen 2
+    
+    STAND
+        Compute, evaluate and declare winner
+    WIINER PAGE
