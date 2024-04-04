@@ -79,7 +79,13 @@
     display: flex;
 }
 
-.play button {
+.play a {
+    height: 12vh;
+    background: none;
+    margin: 0 auto;
+}
+
+.play a button {
     border: 2px solid black;
     height: 10vh;
     width: 200px;
