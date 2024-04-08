@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    margin: 0;
+}
+
+.pwin {
+    border: 2px solid black;
+    margin: 10px auto;
+    padding: 2vh;
+    height: 15vh;
+    width: 50vw;
+    border-radius: 3vh;
+    text-align: center;
+    display: block;
+}
+
+.pwin p {
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.details {
+    border: 2px solid black;
+}
+
+.player {
+    border: 2px solid blue;
+}
+
+.count {
+    border: 2px solid black;
+}
+
