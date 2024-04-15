@@ -27,13 +27,46 @@ img {
 
 .details {
     border: 2px solid black;
+    display: flex;
 }
 
 .player {
     border: 2px solid blue;
+    width: 50vw;
+    height: 70vh;
+    margin: 15px;
 }
 
 .count {
     border: 2px solid black;
+    width: 50vw;
+    height: 25vh;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    padding-top: 2vh;
+    border-radius: 20px;
+    background-color: rgb(218, 211, 211);
 }
 
+
+.count h2 {
+    font-size: 1.5rem;
+    margin-bottom: 4vh;
+    text-decoration: underline;
+}
+.count p {
+    font-size: 3rem
+}
+
+.player .options button {
+    height: 10vh;
+    width: 10vw;
+    margin-top: 8vh;
+    margin-left: 10vw;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration-thickness: 2px;
+    font-weight: bold;
+}
