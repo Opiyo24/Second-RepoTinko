@@ -1,0 +1,297 @@
+CREATING, MODIFYING AND RUNNING DJANGO PROJECTS AND APPLICATIONS.
+
+
+CREATING PROJECT AND APPLICATIONS
+> Install python (3)
+> install pip (pip3)
+> Install django
+    >> pip3 install django
+
+> Create virtual environment
+>  Create django project
+    >> django-admin start_project PROJECT_NAME
+
+    > Create application
+        >> python manage.py startapp APP_NAME
+    
+    > Add APP_NAME to installed applications 
+
+>  Add app path to projects url.py
+
+    import include
+    path('admin', admin.site.urls),
+    >>> path('APP_NAME/', include("APP_NAME.urls"))
+    path('hello/', include("hello.urls"))
+    path('newyear/', include("newyear.urls"))
+
+
+CREATING ROUTES
+>>>>>>>> In app APP_NAME/views.py
+
+- Create functions to define the specific views
+
+
+    from django.http import HttpResponse
+    from django.shortcuts import render
+
+    def index(request):
+        return render(request, "hello/index.html") - create template -> templates/hello/index.html  
+
+
+    def brian(request):
+        return HttpResponse("Hello, Brian!")
+
+    def david(request):
+        return HttpResponse("Hello, David!")
+
+    def greeting(request, name):
+        return render(request, "hello/greet.html" {
+            "name": name.capitalize()
+        })
+
+
+
+> Create APP_NAME/urls.py for this app
+
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        PATH("path_name", name_of_file, "optional_name")
+        path("", views.index, name="index"),
+        path("brian/", views.brian, name="brian"),
+        path("david/", views.david, name="david"),
+        path("<str:name>", views.greeting, name="greet")
+    ]
+
+
+>>> templates/hello/greet.html
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Hello</title>
+        </head>
+        <body>
+            <h1>Hello, {{ name }}!</h1>
+        </body>
+    </html>
+
+
+TT 00:35:37
+
+
+===========================================
+
+                EXAMPLE
+
+===========================================
+
+
+isitchristmas.com
+
+>> python manage.py startapp newyear
+>> project/settings.py -> Installed apps + newyear
+>> project/urls.py
+    path('newyear/', include("newyear.urls"))
+
+>> newyear/urls.py  
+    from django.urls import path
+    from . import views
+
+    urlpatterns = {
+        path("", views,index, name="index")
+    }
+
+
+>> newyear/views.py
+    import datetime
+    from django.shortcuts import render
+
+    def index(request):
+
+        now = datetime.datetime.now()
+        return render(request, "newyear/index.html", {
+            "newyear": nwo.month == 1 and now.day == 1
+        })
+
+
+>> newyear/index.html
+
+{% load sttatic %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Is ity new year?</title>
+        <link href="{% static 'newyear/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        {% if newyear %}
+            <h1>YES</h1>
+        {% else %}
+            <h1>NO</h1>
+        {% endif %}
+    </body>
+</html>
+
+
+
+TT 00:48:00
+
+Static files
+app_folder/static/app_name/styles.css
+
+app_folder/templates/app_name/index.html
+
+>> add line {% load static %} 
+
+TT 00:53:29 - Build todo list
+
+IMPORTS
+app/urls.py
+
+    from django.urls import path
+    from . import views
+
+
+app/views.py
+    from django.shortcuts import render
+    from django.http import HttpResponse
+
+
+project/urls.py
+
+    from django.contrib import admin
+    from django.urls import path, include
+
+
+TT 01:06:40
+
+TT 01:26:52
+
+##### CREATING FORMS IN DJANGO
+- Start by creatinga  form class (app_name/views.py / app_name/forms.py)
+- define the fields of the form.
+- Each field has a custom validation logic
+
+
+field_name = forms.FieldType(**options)
+
+
+from django import forms
+
+#creating a form
+class GeeksForm(forms.Form):
+    title = forms.CharField()
+    description = forms.CharField()
+
+class FormName(forms.Form):
+    # each field would be mapped as an input field in html
+    field_name = forms.Field(**options)
+
+
+
+class InputForm(forms.Form):
+    first_name = forms.CharField(max_length = 200)
+    last_name = forms.CharField(max_length = 200)
+    roll_numner = forms.IntegerField(help_text = "Enter 6 digit roll number")
+    password = forms.CharField(widget = forms.PasswordInput())
+
+
+RENDER FORMS IN DJANGO 
+
+{{ forms.as_table }} - renders form as table fields wrapped in <tr> tags
+
+{{ form.as_p }} - wil; render form wrapped in <p> tags
+
+{{ form.as_ul }} - renders forms wrapped in <ul> tags
+
+
+- IN app_name/views.py on needs to create an instance of the form class created 
+
+app_name/templates/app_name/index.html
+    - <form action="", method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    - </form>
+
+
+- Django kodel form is a class that is used to directly create a form from models
+
+
+app_name/Models.py
+
+    from djanfo.db import models
+
+    class GeeksModel(models.Model):
+        title = models.CharField(max_length = 200)
+        decription = models.TextField()
+        last_modified = models.DateTimeField(auto_now_add = True)
+        img = models.ImageField(upload_to = "images/")
+
+
+        def __str__(self):
+            return self.title
+
+- To create a form from this models, in app_name.forms.py:
+
+    from django import forms
+    from .models import GeeksModel
+
+    
+    class GeeksForm(forms.ModelForm):
+        class Meta:
+            models = GeeksModel
+            fields = "__all__"
+
+
+
+
+##### DJANGO MODELS.
+
+- Used to create tables, their fields and various constrains.
+- Each models maps to a single database table.
+- Each model is a python class that subclasses django.db.models.Model
+- Each attribute of the model corresponds to a database field.
+
+
+    from django.contrib.auth.user import User
+    from django.db import models
+
+    #create models
+    class GeeksModel(models.Model):
+        title = models.CharField(max_length = 200)
+        description = models.TextField()
+
+
+=> python manage.py makemigrations
+=> python manage.py migrate
+
+
+- To render a model in Django admin, we need to modify app_name/admin.py
+
+    from app_name/models import model_name
+
+    admin.site.register(model_name)
+
+
+
+
+======================================================
+
+CREATING FORMS
+======================================================
+- Creating forms from models
+
+from django import forms
+
+- Iplement forms in form of classes
+- Classes inherit from froms.ModelForm)
+
+    class NewToDoFomrm(fomrs.ModelForm)
+
+    - Create meta class - provides form information
+    Model = (Model form is to inherit from)
+    fields = ['text']

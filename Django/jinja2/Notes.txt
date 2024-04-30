@@ -1,0 +1,51 @@
+{{ name }} has a little {{ animal }}.
+
+if name = MAry and animal = Lamb
+
+Mary has a little Lamb
+
+
+
+LOADING TEMPLATES 
+
+from jinja2 import Environment, FileSytemLoader
+file_loader = FileSystemLoader('templeates')
+
+> Load the environment
+
+TEMPLATE VARIABLES
+
+{{ name }} has a little lamb
+
+{{ data.name }} has a little {{ data.animal }}
+
+
+CONTROL STRUCTURES
+
+{% if truth %}
+    This is true
+{% else %}
+    This is false
+{% endif %}
+
+{% for color in colors %}
+    {{ color }}
+{% endfor %}
+
+
+TEMPLATE INHERITANCE 
+header.html
+<head>
+    <title>{{ title }}</title>
+<head>
+
+
+base.html
+<html>
+    {% include 'header.html' %}
+    <body>
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

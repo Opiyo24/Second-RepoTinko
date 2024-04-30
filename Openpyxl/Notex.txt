@@ -1,0 +1,27 @@
+pip install openpyxl
+
+CREATE AND WRITE AN EXCEL FILE
+- Import openpyxl module
+- call a workbook function of openpyxl to create a new blank workbook
+- Get workbook active sheet from the active attribute
+- Once we have the active sheet can get its name from the title attribute
+- We can use the sheet.active attribute to change the sheet's name
+
+
+
+WRITE TO AN EXCEL WORKSHEET
+- cells have row, column and coordinates attributes that provide loction information of the cells
+- Cell object is created by using the object's cell() nethod.
+
+c1 = sheet.cell(row=1, column=1)
+
+- To write a value to c1
+c1.value = "Rai"
+
+- Once we have a worksheet object, we can access a cell object by its name also.
+- Anytime the worksheet object is modified, the save() method must be called in order to save the changes.
+
+
+
+ADDING SHEETS TO A WORKBOOK.
+- Worksjheets vcan be added wuith the workbook object's create_sheet() method.

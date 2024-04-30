@@ -1,0 +1,257 @@
+DYNAMIC WEB CONTENT
+    - INternet socket or network socket - an endpoint of a 
+    bidirectional interprocess communication flow across an 
+    internet Protocol-based  computer network such as the 
+    internet.
+
+    - A port is an application  specific or process specific
+    software communiation endpoint.
+    
+>>>>>>>
+import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr43.org', 80))
+cmd = 'GET http://data.pr4e.org/page1.htm HTTP/1.0\r\n\r\n'.ecode()
+mysock.send(cmd)
+
+while True:
+    data = mysock.recv(512)
+    if len(data) < 1:
+        break
+    print(data.decode(), end="")
+
+mysock.close()
+
+>>>>>>>>>>>
+
+
+
+STRUCTURE OF  A DJANGO APPLICATION 
+installing django 
+
+- Create a virtual environment
+    mkvirtualenv name
+
+- (name) Install django
+    pip install django
+
+- cd into django directory
+- Check django version
+    python -m django --version
+
+
+- Create and update a requirements file
+    requirements.txt
+
+- Install requirements and dependencies
+    pip install -r requirements.txt
+
+
+- Check for errors in tree
+    python manage.py check
+
+- Make migrations - create databse tables
+    python manage.py makemigrations
+
+- CD into project directory
+- Start a new project
+    django stratproject opiyo
+
+- Adjust the allowed hosts setting in 'settings.py'
+    ALLOWED_HOSTS = [
+        '*' - everything
+    ]
+
+
+- Start an application called polls
+
+    python manage.py startapp polls
+
+    polls/views.py
+        from django.http import HTTPResponse
+
+        def index(request)
+            return HTTPResponse("Hello, world. You are at the polls index")
+
+
+    Create a file called polls/urls.py
+
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        path('', views, name='index') first path
+    ]
+
+
+    Point he root urlconf at the polls.urls module in myproject/urls.py
+
+    from django.contrib import admin
+    from django.urls import include, path
+
+    urlpatterns = [
+        path('polls/', include('polls.urls')),
+        path('admin/', admin.siteurls),
+    ]
+
+    - The include function allows referencing other URLConfs 
+
+    Python manage.py check
+    python manage.py runserver
+
+
+    HTML
+
+- HTML special characters
+    < &lt
+    > &gt 
+    & &amp
+
+
+TT 2: 20: 58 - CSS
+
+
+
+TT 3:29:00 - GitHub
+Gitignore file
+
+.gitignore
+    __pycache__
+    *.swp
+    *.sqlite
+
+
+TT 3:42:10 - SQL 
+
+- Database model - database schema
+- THe tsructure or format of a database.
+
+4: 19: 24
+
+DJANGO MODELS 
+CREATE TABLE Users (
+    id integer NOT NULL,
+    PRIMARY KEY,
+    AUTOUNCREMENT,
+    name VARCHAR(128),
+    email VARCHAR(128)
+);
+
+OBJECT RELATIONAL MAPPERS
+- Create python objecta nd ask to be placed in a table.
+
+app/models.py
+
+from django.db import models 
+
+class User(models.Model):
+    name = models.CharField(max_length=128)
+    email = models.CharField(max_length=128)
+
+
+$ python 3 manage.py shell
+>>> from usermodel.models import User
+>>> u = User(name='Kristen', email='kf@umich.edu')
+>>> u.save()
+>>> print(u.id)
+1
+>>> print(u.email)
+kf@umich.edu
+>>>
+
+
+
+4:39:24
+4:47:20
+
+Create repository
+create projects inside virtual environment
+>> pip3 install -r requirements.txt
+>> python3 manage.py check
+>> python3 manage.py makemigrations
+>> rm db.sqlite3 - remove database completely
+>> python3 manage.py makemigrations - create database afresh
+
+Launc SQL shell
+- Create an object
+    From users.models import User
+
+    user = User(name='Oporo', email='oporo@oporo')
+    >>> user.save()
+    >>> user.name 
+    oporo
+    >>> user.email
+    oporo@oporo
+
+    Create a new user:
+    user = User(name='Jumila', email='Jumila@home')
+    >>> user.save()
+    >>> user.name
+    Jumila
+    >>> User.object.values() - lists all objects
+
+    Update an onject
+    >>> User.objects.filter(email='oporo@oporo').update(name='opozi')
+
+
+TT 5:00:00
+
+- In case of error and need to start again:
+    - Remove mirations files
+    - Remove sqlite files
+
+    >> rm */migrations/00*
+    >> rm db.sqlite3
+
+    - Make migrations afresh
+    >> python manage.py makemigrations/ migrate
+    >> python manage.py check
+    >> create superuser
+
+    >> python manage.py createsuperuser
+        - username
+        - email
+        - password
+
+
+MODELS 
+
+    class artists(models.Model):
+        name = models.CharField(max_length=200, db_index=True, help_text='Artist name')
+
+        def __str__(self):
+            """String fir representing the model object"""
+            return self.name
+
+
+    class Track(models.Model):
+        title = models.CharField(max_length=200, db_index=True, help_text='Track Title')
+        rating = models.IntegerField(null=True)
+        length = models.IntegerField(null=True)
+        count = models.IntegerField(null=True)
+        album = models.ForeignKey('Album', on_delete=models.CASCADE)
+        genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True)
+
+        def __str__(self):
+            """String to represent the model object"""
+            return self.title
+
+
+
+
+
+====================================================
+
+VIEWS AND TEMPLATES
+====================================================
+
+TT 05:38:29 - URLs 
+TT 06:33:34 - Generic Views 
+
+- Generic.listviews - Study
+
+
+TT 06:50:56 - FORMS PROCESSING
+
+TT 6:59:03
