@@ -1,0 +1,18 @@
+Create account
+    - Name 
+    - Last Name
+    - Username
+    - Email address
+
+Create template
+    Development types
+    Planners
+    Log status
+
+start logging
+
+Dasboard
+
+Export data to excel
+    Periodically
+    Export button
