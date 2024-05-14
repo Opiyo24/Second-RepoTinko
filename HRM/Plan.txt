@@ -1,0 +1,31 @@
+HUMAN RESOURCE MANAGEMENT APPLICATION
+
+HR VIEW
+    DASHBOARD
+        Number of employees
+        Number of employees according to gender
+        Number of employees according to levels of skill
+
+     STAFF
+     RECRUITMENT
+     SALARIES AND BONUSES
+     LEAVE 
+    Shift sheduler 
+    Master calendar
+
+
+EMPLOYEE 
+    Total work Hours
+        Salary
+    Total Overtime
+        Bonuses 
+    Leave days spent/ Left
+        Leave applicaation
+        Sick off application 
+        Off-day application
+    Trips
+        application
+        Bonus calculator
+        Fares and travels expenses
+    Shift schedule
+    Calendar
