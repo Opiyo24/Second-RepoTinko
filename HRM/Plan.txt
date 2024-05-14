@@ -1,3 +1,100 @@
+Create comapany - Master account
+
+    Company details
+        Name
+        Address
+        Telephone
+        Motto
+    Departments
+    Staff (Users)
+
+Register staff - Users 
+    Name
+    Designation
+    Contract type
+    Staff Number
+    Email
+    Telephone
+    Remuneration (ask)
+
+Staff views
+    General staff database
+    Department
+    Gender
+    Export to excel
+
+Make  announcements
+    Fill form
+        Title
+        Description (Message)
+        Date
+            From 
+            To
+
+Social Center
+    Contributions
+        Title
+        Description
+        Name
+        Department
+        Pledge/ Contribute
+        Amount
+        Confirmation Message
+
+Remove Staff
+    Name
+    Contarct type
+    Staff Number
+    Email
+    Telephone
+
+Calendar
+    Implement - ALX style
+
+Leave/Off/Sick days
+    Name
+    Department
+    Leave type
+    days
+    Calendar 
+
+Remuneration
+    Normal Hours
+    Overtime
+    Trips
+    Travel expenses
+    Calendar 
+
+
+APPLICATIONS
+    Authentication
+        g
+
+    REGISTRATION
+        Creating Company
+        Registering staff
+        Removing staff
+
+    Social Center
+        announcements
+        Contributions 
+
+    Calendar 
+        Calendar view 
+        Days picker
+
+    Remuneration
+        Leave/Sick off/Off days
+        Salaries 
+        Bonuses
+        Per diems
+        TRavel expenses      
+
+
+
+
+
+
 HUMAN RESOURCE MANAGEMENT APPLICATION
 
 HR VIEW
