@@ -83,6 +83,9 @@ APPLICATIONS
         Calendar view 
         Days picker
 
+            ==> Dev/Portfolio/event-calendar
+            ==> Second-Repotinko/HRM/Calendar
+
     Remuneration
         Leave/Sick off/Off days
         Salaries 

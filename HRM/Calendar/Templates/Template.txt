@@ -1,0 +1,14 @@
+myapp/templates/index.html
+
+Bootstrap 5
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
+https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css
+
+Jquery
+https://jquery.com/download/
+CDN : jsDelivr CDN
+https://www.jsdelivr.com/package/npm/jquery
+https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
+
+https://fullcalendar.io/
+CND : https://cdnjs.com/libraries/fullcalendar/3.9.0 
