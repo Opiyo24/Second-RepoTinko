@@ -68,16 +68,51 @@ Remuneration
 
 APPLICATIONS
     Authentication
-        g
+        Create Users
+            Name
+            Email
+            Username
+            Password
+            Company
 
     REGISTRATION
         Creating Company
+            Name of Company
+            type
+            PO Box
+            Town
+            Email
+            Telephon
+            Website(op)
         Registering staff
+            Add Staff 
+                Name
+                Id
+                Contract type
+                Department
+                Designation
+                Remuneration?
+                    Amount
+                Work hours
+                Username
+                Password
         Removing staff
+            Name
+            Id
+            Department(AF)
+            Reason
 
     Social Center
         announcements
-        Contributions 
+            Create announcements
+                Date
+                Title - Audience
+                Description
+
+        Contributions
+            Title
+            Type of event
+            Contribution deadline
 
     Calendar 
         Calendar view 
@@ -108,6 +143,15 @@ HR VIEW
 
      STAFF
      RECRUITMENT
+        Add Staff 
+            Name
+            Id
+            Contract type
+            Department
+            Designation
+            Remuneration?
+                Amount
+            Work hours
      SALARIES AND BONUSES
      LEAVE 
     Shift sheduler 
