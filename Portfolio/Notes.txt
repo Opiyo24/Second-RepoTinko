@@ -61,3 +61,128 @@ addemployee.html
 
   
 {% endblock content %}
+
+
+USER REGISTRATION
+Students and teachers require separate profile data
+
+
+if role == Student:
+    allow/ deny
+
+
+- Create groups and define permissions
+    HR
+    Administration
+    Staff
+
+models.py
+
+from django.db import models
+from django.contrib.auith.models import AbstractUser - Utilize own user table
+
+
+class User(AbstractUser):
+    class Role(models.TextChoices):
+        ADMIN = "ADMIN", 'Admin'
+        STUDENT = "STUDENT", 'Student'
+        TEACHER = "TEACHER", 'Teacher'
+
+
+    base_role = Role.ADMIN
+
+    role = models.CharField(max_length=50, choices=Role.choices)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
+            return super().save(*arg, **Kwargs)
+
+
+Settings.py
+- When using AbstractUser - notify settings.py to acknowledge use of new yuser type
+
+
+class Student(User):
+    base_role = User.Role.STUDENT
+
+    class Meta:
+        proxy = True
+
+    def welcome(self):
+        retrun "Only for students"
+
+
+
+>>> from user.models impory User
+>>> Student.objects.create_user(username='s1', password='123asdfg')
+
+
+pip install black - format code
+python3 -m black .
+
+class StudentProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    student_id = models.IntegerField(null=True, blank=True)
+
+
+from django.db.models.siganls import post_save
+- Be able to modify data even afte savuing by sending edit siganls
+from django.dispatch import receiver
+
+
+
+MODELS formgrabs database object and creates a form from all the attributes
+
+=============Models.py
+
+from django.db import models
+
+class Customer(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+
+    def __str__(self):
+    return self.first_name + ' ' + self.last_name 
+
+================Forms.py
+
+from django.forms import ModelForm
+from .models import Customer
+
+class CustomerFomr(ModelForm):
+    cass Meta:
+        model = Customer
+        fields = '__all__'
+
+
+
+===============Views.py
+from django.shortcuts import render
+from .forms import CustomerForm
+
+def index(request):
+    form = CustomerForm()
+
+    if request.method == "POST":
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {}
+    return render(request, 'app/index.html', context)
+
+
+
+================index.html
+
+<h3>Customer form</h3>
+<hr>
+
+<form action="where to go next" method="POST">
+
+    {% csrf_token %}
+    {{ form }}
+    <input type="Submit">
+
+</form>
