@@ -1,0 +1,63 @@
+Crud App - video
+
+TIME STAMP{
+    00:48:00
+    01:13:00
+}
+
+
+bootstrap.com
+- Root folder/templates/base.html
+- Page to be inherited by all
+
+Sample boostrap code
+Script tags - bottom of page
+`   Bootstrap -> Bundle -> Script
+
+- Register project/base.html file
+
+==> settings.py -> TEMPLATES => "DIRS":[
+    os.path.join(BASE_DIR, 'templates')
+]
+
+<at top> Import os\
+
+
+addemployee.html
+
+{% estends "base.html" %}
+{% block content %}
+    <h3>Add Employee Page</h3>
+
+    <div class="card p-3 bg-dark">
+        <form action="/addemployee/" method="POST">
+            <div class="mb-2">
+                <label for="exampleInputEmail" class="form-label">Employee Id</label>
+                <input type="text" class="form-control" placeholder="Enter the employee Id" name="employeeid">
+            </div>
+
+            <div class="mb-2">
+                <label for="exampleInputEmail" class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Enter the employee Name" name="employeename">
+            </div>
+
+            <div class="mb-2">
+                <label for="exampleInputEmail" class="form-label">Employee Email</label>
+                <input type="text" class="form-control" placeholder="Enter the employee Email" name="employeeemail">
+            </div>
+
+            <div class="mb-2">
+                <label for="exampleInputEmail" class="form-label">Phone</label>
+                <input type="text" class="form-control" placeholder="Enter the employee Phone" name="employeephone">
+            </div>
+            <!--Repplicate-->
+
+            <!--Button-->
+            <div class="container text-center mt-2">
+                <button type="submit" class="btn btn-sm btn-outline-success">Add Employee</button>
+            </div>
+        </form>
+    </div>
+
+  
+{% endblock content %}
