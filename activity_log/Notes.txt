@@ -16,3 +16,68 @@ Dasboard
 Export data to excel
     Periodically
     Export button
+
+
+
+LOGIN AND LOGOUT
+
+TEMPLATES 
+
+'DIRS' : [BASE_DIR / "templates"]
+
+views.py 
+
+from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+
+def authviews(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+    else:     
+        form = UserCreationForm()
+    return render(request, "registration/signup.html", {"form":form})
+
+
+
+SETTINGS.PY 
+
+LOGIN_REDIRECT_URL = "base:home"(home view)
+LOGOUT_REDIRECT_URL = "base:login"(login view)
+
+
+
+BASE.HTML 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>
+
+
+STATIC/
+CSS/
+style.css
+
+
+urls.py
+
+from django.contrib import admin
+from django.urls immport path, include
+from django.conf import settings 
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", include("base.urls", "base"), "base")
+] + static(settings.STATIC_URL)
