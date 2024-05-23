@@ -173,3 +173,29 @@ EMPLOYEE
         Fares and travels expenses
     Shift schedule
     Calendar
+
+
+
+IMPLEMENTATION
+DAY 1:
+    Create a User
+        Sign up
+        Log in
+    Create a Company
+        Register Company
+    Create staff - Users
+        Username
+        Password
+        Contract type
+        Salaried?
+
+        ********
+        First Name
+        Middle Name
+        Last Name
+        Gender
+        DAte of birth
+        Department
+        upload profile photo (SIzing the photo)
+    Remove staff
+

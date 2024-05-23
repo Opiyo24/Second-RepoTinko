@@ -85,97 +85,6 @@ urlpatterns = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 AUTHENTICATION AND DYNAMIC views
 #################app/decorators.py
 from django.http import HttpResponse
@@ -261,5 +170,9 @@ def registration(request):
 {% if request.user.is_staff %}
     navbar options
 {% endif %}
+
+
+
+===================>> STATIC FILES
 
         
